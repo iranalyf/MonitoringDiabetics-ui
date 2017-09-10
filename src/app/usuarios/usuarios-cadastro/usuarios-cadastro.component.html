@@ -1,0 +1,53 @@
+<div class="container">
+    <h2>Cadastro de Usuário</h2>
+    <div class="ui-g">
+
+      <div class="ui-g-12 ui-fluid">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" pInputText>
+          <label for="float-input">Nome Completo*</label>
+      </span>
+      </div>
+
+      <div class="ui-g-6 ui-fluid">
+      <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" pInputText>
+          <label for="float-input">E-Mail*</label>
+      </span>
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+          <span class="ui-float-label">
+              <p-calendar ></p-calendar>
+              <label for="float-input">Data de Nascimento*</label>
+          </span>
+      </div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-3 ui-fluid">
+      <span class="ui-float-label">
+          <input id="float-input" pPassword type="password"  />
+          <label for="float-input">Senha*</label>
+      </span>
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+          <span class="ui-float-label">
+              <input id="float-input" pPassword type="password"  />
+              <label for="float-input">Confirma Senha*</label>
+          </span>
+      </div>
+    </div>
+
+    <span style="font-weight: bold; margin-left: 8px">Grupos*</span>
+    <div class="ui-g">
+        <div class="ui-g-6 ui-fluid">
+
+          <p-checkbox name="groupname" value="Administrador" label="Administrador" ></p-checkbox>
+          <p-checkbox name="groupname" value="Profissional de Saúde" label="Profissional de Saúde" ></p-checkbox>
+        </div>
+    </div>
+
+    <button pButton type="button" class="ui-button-primary" label="Cadastrar"></button>
+    <button pButton type="button" class="ui-button-secondary" label="Limpar"></button>
+</div>
