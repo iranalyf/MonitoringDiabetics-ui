@@ -9,6 +9,12 @@ body {
 .container {
   width: 1170px;
   margin: 0 auto;
+  margin-top: 20px;
+}
+
+.loginContainer {
+  margin-top: 150px;
+  margin-left: 400px
 }
 
 .ui-dropdown-filter-container {

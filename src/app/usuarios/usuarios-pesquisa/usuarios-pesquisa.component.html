@@ -1,3 +1,44 @@
-<p>
-  usuarios-pesquisa works!
-</p>
+<div class="container">
+  <form autocomplete="off">
+    <div class="ui-g">
+      <h2>Pesquisa de Usuários</h2>
+        <div class="ui-g-12 ui-fluid">
+            <span class="ui-float-label">
+              <input pInputText id="float-input" type="text" size="30"  >
+              <label for="float-input">Nome: </label>
+          </span>
+
+          </div>
+          <button pButton type="submit" class="ui-button-primary" label="Pesquisar" ></button>
+    </div>
+
+  </form>
+
+  <div class="ui-g">
+      <div class="ui-g-12">
+
+        <p-dataTable [value]="usuarios"  [responsive]=true
+            emptyMessage="Nenhum usuário encontrado" >
+          <p-column field="nome" header="Nome" ></p-column>
+          <p-column field="cpf" header="Cpf" ></p-column>
+          <p-column field="dataNascimento"  header="Data de Nascimento" ></p-column>
+          <p-column field="email"  header="E-Mail" styleClass="col-data"></p-column>
+
+          <p-column styleClass="col-acoes">
+
+            <ng-template let-l="rowData" pTemplate="body">
+              <a pButton icon="fa-pencil" pTooltip="Editar"
+              tooltipPostion="top" ></a>
+
+              <button pButton icon="fa-trash" pTooltip="Apagar" tooltipPostion="top"
+                  ></button>
+              </ng-template>
+
+          </p-column>
+        </p-dataTable>
+
+      </div>
+
+</div>
+
+</div>
