@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { UsuarioService  } from './../usuario.service'
+
+import { ToastyService } from 'ng2-toasty'
+
+import { ErrorHandlerService } from './../../core/error-handler.service'
 
 @Component({
   selector: 'app-usuarios-pesquisa',
@@ -9,8 +13,13 @@ import { UsuarioService  } from './../usuario.service'
 export class UsuariosPesquisaComponent implements OnInit{
   
   usuarios = []
+  @ViewChild('tabela') grid
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(
+    private usuarioService: UsuarioService,
+    private toasty: ToastyService,
+    private errorHandle: ErrorHandlerService
+  ) { }
 
   ngOnInit() {
      this.pesquisar()
@@ -19,7 +28,15 @@ export class UsuariosPesquisaComponent implements OnInit{
   pesquisar() {
     this.usuarioService
       .findAll()
-      .then()
-      .catch(err => console.log(JSON.stringify(err)))
+      .then(response => this.usuarios = response)
+      .catch(err => this.errorHandle.handle(err))
+  }
+
+  excluir(usuario: any) {
+    this.usuarioService.delete(usuario.codigo)
+    .then(() => { 
+      this.grid.first === 0 ? this.pesquisar() : this.grid.first = 0
+      this.toasty.success('Excluído com Sucesso.')})
+    .catch(err => this.errorHandle.handle(err))
   }
 }

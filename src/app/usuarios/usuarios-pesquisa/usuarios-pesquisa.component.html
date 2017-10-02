@@ -18,7 +18,7 @@
       <div class="ui-g-12">
 
         <p-dataTable [value]="usuarios"  [responsive]=true
-            emptyMessage="Nenhum usuário encontrado" >
+            emptyMessage="Nenhum usuário encontrado" #tabela>
           <p-column field="nome" header="Nome" ></p-column>
           <p-column field="cpf" header="Cpf" ></p-column>
           <p-column field="dataNascimento"  header="Data de Nascimento" ></p-column>
@@ -26,12 +26,12 @@
 
           <p-column styleClass="col-acoes">
 
-            <ng-template let-l="rowData" pTemplate="body">
+            <ng-template let-usuario="rowData" pTemplate="body">
               <a pButton icon="fa-pencil" pTooltip="Editar"
               tooltipPostion="top" ></a>
 
-              <button pButton icon="fa-trash" pTooltip="Apagar" tooltipPostion="top"
-                  ></button>
+              <button pButton icon="fa-trash" 
+              pTooltip="Apagar" tooltipPostion="top" (click)="excluir(usuario)"></button>
               </ng-template>
 
           </p-column>

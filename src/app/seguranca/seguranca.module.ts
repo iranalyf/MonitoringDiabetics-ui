@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 
 import { LoginComponent } from './login/login.component';
@@ -13,7 +14,8 @@ import { ButtonModule } from 'primeng/components/button/button';
     CommonModule,
     InputTextModule,
     PasswordModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule
   ],
   declarations: [LoginComponent],
   exports: [LoginComponent]
