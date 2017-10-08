@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms'
+import { Component, OnInit } from '@angular/core'
+
+import { PacienteService  } from './../paciente.service'
+import { ToastyService } from 'ng2-toasty'
+import { ErrorHandlerService } from './../../core/error-handler.service'
+
+import { paciente } from './../../core/models/paciente'
+
 
 @Component({
   selector: 'app-pacientes-cadastro',
@@ -30,5 +38,17 @@ export class PacientesCadastroComponent  {
     { label: 'Uberlandia', value: 3 },
   ];
 
-  constructor() {}
+  paciente = new paciente()
+
+  constructor(
+    private pacienteService: PacienteService,
+    private errorHandler: ErrorHandlerService,
+    private toasty: ToastyService
+  ) {}
+
+  salvar(form: FormControl) {
+    this.pacienteService.save(this.paciente)
+    .then(() => this.toasty.info('Paciente Salvo com Sucesso'))
+    .catch(err => this.errorHandler.handle(err))
+  }
 }

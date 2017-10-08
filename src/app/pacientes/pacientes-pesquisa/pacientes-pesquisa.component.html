@@ -7,7 +7,6 @@
                 <input id="float-input" type="text" size="30" pInputText >
                 <label for="float-input">Cpf: </label>
             </span>
-
           </div>
 
           <div class="ui-g-6 ui-fluid">
@@ -22,7 +21,7 @@
 
           <p-dataTable [value]="pacientes"  [responsive]=true
               emptyMessage="Nenhum Paciente encontrado" >
-            <p-column field="nome" header="Nome" ></p-column>
+            <p-column field="primeiroNome" header="Nome" ></p-column>
             <p-column field="cpf" header="Cpf" ></p-column>
             <p-column field="dataNascimento"  header="Data de Nascimento" ></p-column>
             <p-column field="email"  header="E-Mail" styleClass="col-data"></p-column>
@@ -42,6 +41,6 @@
           </p-dataTable>
 
         </div>
-
+       
   </div>
 </div>

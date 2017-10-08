@@ -1,3 +1,60 @@
-<p>
-  dietas-cadastro works!
-</p>
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+    <h2>Cadastro de Dieta</h2>
+    <div class="ui-g">
+
+        <div class="ui-g-6 ui-fluid">
+            <p-dropdown [options]="pacientes" [autoWidth]="false"></p-dropdown>
+         </div>
+
+
+        <div class="ui-g-6 ui-fluid">
+            <span class="ui-float-label">
+                <p-calendar name="dataFim" 
+                [(ngModel)]="dieta.dataFim" #dataFim="ngModel" required ></p-calendar>
+                <label for="float-input">Data Fim*</label>
+            </span>
+            <div *ngIf="dataFim.hasError('required') && dataFim.dirty"
+            class="ui-message ui-messages-error" >
+              Informe a Data Final da Dieta
+            </div>
+  
+        </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" pInputText
+            name="descricao" [(ngModel)]="dieta.descricao" #descricao="ngModel" required minlength="12">
+          <label for="float-input">Descrição*</label>
+
+      </span>
+      <div *ngIf="descricao.hasError('required') && descricao.dirty"
+        class="ui-message ui-messages-error" >
+          Informe a descrição
+        </div>
+        <div *ngIf="descricao.hasError('minlength') && descricao.dirty"
+          class="ui-message ui-messages-error" >
+            Informe no mínimo {{ descricao.errors.minlength.requiredLength }} caracteres.
+          </div>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+      <span class="ui-float-label">
+        
+          <textarea [rows]="5" [cols]="30"
+              pInputTextarea name="observacao" [(ngModel)]="dieta.observacao"></textarea>
+
+          <label for="float-input">Observação*</label>
+      </span>
+
+ 
+
+      </div>
+
+    </div>
+
+    <br/>
+    <button pButton type="submit" class="ui-button-primary" label="Cadastrar"></button>
+    <button pButton type="button" class="ui-button-secondary" label="Limpar"></button>
+  </form>
+</div>

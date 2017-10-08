@@ -21,6 +21,8 @@ import { DataTableModule } from 'primeng/components/datatable/datatable';
 
 import { PacientesCadastroComponent } from './pacientes-cadastro/pacientes-cadastro.component';
 
+import { PacienteService } from './paciente.service'
+
 @NgModule({
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { PacientesCadastroComponent } from './pacientes-cadastro/pacientes-cadas
   exports: [
     PacientesCadastroComponent,
     PacientesPesquisaComponent
-  ]
+  ],
+  providers: [ PacienteService ]
 })
 export class PacientesModule { }

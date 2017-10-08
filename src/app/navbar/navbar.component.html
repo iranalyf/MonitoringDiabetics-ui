@@ -10,7 +10,11 @@
   
     <ul class="navbar-menu" [hidden]="!exibindoMenu">
       <li class="navbar-usuario">Usuário Logado</li>
-      <li class="navbar-menuitem"><a href="#">Pacientes</a></li>
+      <li class="navbar-menuitem"><a [routerLink]="['dashboard']">Dahsboard</a></li>
+      <li class="navbar-menuitem"><a [routerLink]="['usuarios']">Usuários</a></li>
+      <li class="navbar-menuitem"><a [routerLink]="['pacientes']">Pacientes</a></li>
+      <li class="navbar-menuitem"><a [routerLink]="['dietas/nova']">Dietas</a></li>
+      <li class="navbar-menuitem"><a [routerLink]="['medicacao/nova']">Medicações</a></li>
       <li class="navbar-menuitem"><a href="#">Relatórios</a></li>
       <li class="navbar-menuitem"><a href="#">Logout</a></li>
     </ul>
