@@ -1,3 +1,44 @@
-<p>
-  dashboard works!
-</p>
+<div class="container">
+    <h2>Dashboard</h2>
+
+    <div class="ui-g">
+        <div class="ui-g-4 ui-fluid">
+            <p-panel header="Total de Profissionais Ativos">
+                {{totalAllUsers}}
+            </p-panel>
+        </div>
+
+        <div class="ui-g-4 ui-fluid">
+             <p-panel header="Total de Pacientes Ativos">
+                    {{pacientesActives}}
+            </p-panel>
+        </div>
+
+        <div class="ui-g-4 ui-fluid">
+            <p-panel header="Total de Pacientes">
+                        {{pacientes}}
+             </p-panel>
+         </div>
+    </div>
+    <div class="ui-g">
+        <div class="ui-g-6 ui-fluid">
+            <p-growl [value]="msgs"></p-growl>
+            <p-chart type="line" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
+        </div>
+
+        <div class="ui-g-6 ui-fluid">
+            <p-growl [value]="msgs"></p-growl>
+            <p-chart type="bar" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
+        </div>
+
+        <div class="ui-g-6 ui-fluid">
+            <p-growl [value]="msgs"></p-growl>
+            <p-chart type="radar" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
+        </div>
+
+        <div class="ui-g-6 ui-fluid">
+            <p-growl [value]="msgs"></p-growl>
+            <p-chart type="line" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
+        </div>
+    </div>
+</div>

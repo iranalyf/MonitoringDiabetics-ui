@@ -23,18 +23,16 @@ export class MedicacoesCadastroComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-
     this.loadPacientes()
   }
 
   medicacao = new medicacao()
-
   pacientes = []
 
-  save(form: FormControl) {
-    this.medicacaoService.save(this.medicacao)
+  saveMedicacao(form: FormControl) {
+    this.medicacaoService.saveMedicacao(this.medicacao)
       .then(() => {
-        this.toasty.success('Medicação Cadastrada com Sucesso!')
+        this.toasty.success('Medicação Adicionada com Sucesso para o Paciente!')
         form.reset()
       })
       .catch(err => this.errorHandle.handle(err))
@@ -47,5 +45,4 @@ export class MedicacoesCadastroComponent implements OnInit{
       })
     .catch(err => this.errorHandle.handle(err))
   }
-
 }

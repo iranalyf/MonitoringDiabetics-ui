@@ -11,8 +11,7 @@ export class PacienteService {
   pacientesUrl = "http://localhost:8080/api/v1/pacientes"
 
   constructor(
-    private http: Http
-  ) { }
+    private http: Http) { }
 
   save(paciente: paciente): Promise<void> {
     const headers = new Headers()

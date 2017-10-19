@@ -12,7 +12,9 @@ import { SegurancaModule } from './seguranca/seguranca.module'
 import { PacientesModule } from './pacientes/pacientes.module'
 import { UsuariosModule } from './usuarios/usuarios.module'
 import { DashModule } from './dash/dash.module'
+import { DoencasModule } from './doencas/doencas.module'
 
+import { MedicacaoHorarioComponent } from './medicacao/medicacao-horario/medicacao-horario.component'
 import { UsuariosPesquisaComponent } from './usuarios/usuarios-pesquisa/usuarios-pesquisa.component'
 import { UsuariosCadastroComponent } from './usuarios/usuarios-cadastro/usuarios-cadastro.component'
 import { DashboardComponent } from './dash/dashboard/dashboard.component'
@@ -33,7 +35,8 @@ const rotas: Routes = [
   { path: 'pacientes', component: PacientesPesquisaComponent },
   { path: 'pacientes/novo', component: PacientesCadastroComponent },
   { path: 'dietas/nova', component: DietasCadastroComponent},
-  { path: 'medicacao/nova',component: MedicacoesCadastroComponent}
+  { path: 'medicacao/nova',component: MedicacoesCadastroComponent},
+  { path: 'medicacao/horario', component: MedicacaoHorarioComponent}
 ]
 
 @NgModule({
@@ -48,6 +51,7 @@ const rotas: Routes = [
 
     RouterModule.forRoot(rotas),
    
+    DoencasModule,
     CoreModule,
     UsuariosModule,
     PacientesModule,
@@ -55,7 +59,6 @@ const rotas: Routes = [
     MedicacaoModule,
     DietasModule,
     DashModule
-
   ],
   providers: [],
   bootstrap: [ AppComponent ]

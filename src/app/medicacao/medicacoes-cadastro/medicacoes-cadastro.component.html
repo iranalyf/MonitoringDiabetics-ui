@@ -1,14 +1,16 @@
 <div class="container">
-    <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="saveMedicacao(f)">
       <h2>Cadastro de Medicação</h2>
       <div class="ui-g">
   
-          <div class="ui-g-6 ui-fluid">
-              <p-dropdown [options]="pacientes" [autoWidth]="false"></p-dropdown>
+          <div class="ui-g-9 ui-fluid">
+              <p-dropdown name="paciente" [options]="pacientes" [filter]="true" 
+              [autoWidth]="false" [(ngModel)]="medicacao.paciente.codigo"
+                placeholder="Selecione o Paciente"></p-dropdown>
            </div>
   
   
-          <div class="ui-g-6 ui-fluid">
+          <div class="ui-g-3 ui-fluid">
               <span class="ui-float-label">
                   <p-calendar name="dataMedicacao" 
                   [(ngModel)]="medicacao.dataMedicacao" #dataMedicacao="ngModel" required ></p-calendar>
@@ -43,18 +45,13 @@
           
             <textarea [rows]="5" [cols]="30"
                 pInputTextarea name="observacao" [(ngModel)]="medicacao.observacao"></textarea>
-  
             <label for="float-input">Observação*</label>
         </span>
-  
-   
-  
         </div>
-  
       </div>
   
       <br/>
-      <button pButton type="submit" class="ui-button-primary" label="Cadastrar"></button>
+      <button pButton type="submit" class="ui-button-primary" [disabled]="f.invalid" label="Adicionar"></button>
       <button pButton type="button" class="ui-button-secondary" label="Limpar"></button>
     </form>
   </div>

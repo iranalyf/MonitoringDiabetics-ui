@@ -13,6 +13,7 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { ButtonModule } from 'primeng/components/button/button';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
+import { MedicacaoHorarioComponent } from './medicacao-horario/medicacao-horario.component';
 
 @NgModule({
   imports: [
@@ -27,8 +28,14 @@ import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtexta
     InputTextareaModule,
     DropdownModule
   ],
-  exports: [MedicacoesCadastroComponent],
-  declarations: [MedicacoesCadastroComponent],
+  exports: [
+    MedicacoesCadastroComponent,
+    MedicacaoHorarioComponent
+  ],
+  declarations: [
+    MedicacoesCadastroComponent, 
+    MedicacaoHorarioComponent
+  ],
   providers:[MedicacaoService]
 })
 export class MedicacaoModule { }

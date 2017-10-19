@@ -1,3 +1,6 @@
+import { doenca } from './doenca'
+import { endereco } from './endereco'
+
 export class paciente {
     codigo: number
     primeiroNome: string
@@ -7,12 +10,9 @@ export class paciente {
     telefone: string
     email: string
     senha: string
-    confirmaSenha: string
     situacao: boolean
-    logradouro: string
-    numero: string
-    complemento: string
-    cep: string
-    cidade: string
-    estado: string
+    endereco = new endereco()
+    doenca = new doenca()
 }
+
+

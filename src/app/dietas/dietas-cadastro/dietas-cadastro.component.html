@@ -1,14 +1,16 @@
 <div class="container">
   <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
     <h2>Cadastro de Dieta</h2>
+  
     <div class="ui-g">
-
-        <div class="ui-g-6 ui-fluid">
-            <p-dropdown [options]="pacientes" [autoWidth]="false"></p-dropdown>
+        <div class="ui-g-9 ui-fluid">
+            <p-dropdown name="paciente" [filter]="true" [options]="pacientes" 
+            [autoWidth]="false" 
+              placeholder="Selecione o Paciente" 
+              [(ngModel)]="dieta.paciente.codigo"></p-dropdown>
          </div>
 
-
-        <div class="ui-g-6 ui-fluid">
+        <div class="ui-g-3 ui-fluid">
             <span class="ui-float-label">
                 <p-calendar name="dataFim" 
                 [(ngModel)]="dieta.dataFim" #dataFim="ngModel" required ></p-calendar>
@@ -38,6 +40,121 @@
           </div>
       </div>
 
+      <!--Cardapio-->
+
+      <div class="ui-g-12 ui-fluid">
+        <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText name="cafeManha" 
+            [(ngModel)]="dieta.cafeManha" #cafeManha="ngModel" required>
+            <label for="float-input">Cafe da Manha*</label>
+        </span>
+  
+        <div *ngIf="cafeManha.hasError('required') && cafeManha.dirty"
+        class="ui-message ui-messages-error" >
+          Informe o Cafe da Manha
+        </div>
+  
+        </div>
+
+        <div class="ui-g-12 ui-fluid">
+          <span class="ui-float-label">
+              <input id="float-input" type="text" size="30" pInputText name="lancheManha" 
+              [(ngModel)]="dieta.lancheManha" #lancheManha="ngModel" required>
+              <label for="float-input">Lanche da Manha*</label>
+          </span>
+    
+          <div *ngIf="lancheManha.hasError('required') && lancheManha.dirty"
+          class="ui-message ui-messages-error" >
+            Informe Lanche da Manha
+          </div>
+    
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <span class="ui-float-label">
+                <input id="float-input" type="text" size="30" pInputText name="almoco" 
+                [(ngModel)]="dieta.almoco" #almoco="ngModel" required>
+                <label for="float-input">Almoco*</label>
+            </span>
+      
+            <div *ngIf="almoco.hasError('required') && almoco.dirty"
+            class="ui-message ui-messages-error" >
+              Informe o Almoco
+            </div>
+      
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+              <span class="ui-float-label">
+                  <input id="float-input" type="text" size="30" pInputText name="sobremesaAlmoco" 
+                  [(ngModel)]="dieta.sobremesaAlmoco" #sobremesaAlmoco="ngModel" required>
+                  <label for="float-input">Sobremesa do Almoco*</label>
+              </span>
+        
+              <div *ngIf="sobremesaAlmoco.hasError('required') && sobremesaAlmoco.dirty"
+              class="ui-message ui-messages-error" >
+                Informe a Sobremesa do Almoco
+              </div>
+        
+              </div>
+
+              <div class="ui-g-12 ui-fluid">
+                <span class="ui-float-label">
+                    <input id="float-input" type="text" size="30" pInputText name="lancheTarde" 
+                    [(ngModel)]="dieta.lancheTarde" #lancheTarde="ngModel" required>
+                    <label for="float-input">Lanche da Tarde*</label>
+                </span>
+          
+                <div *ngIf="lancheTarde.hasError('required') && lancheTarde.dirty"
+                class="ui-message ui-messages-error" >
+                  Informe o Lanche da Tarde
+                </div>
+          
+                </div>
+
+                <div class="ui-g-12 ui-fluid">
+                  <span class="ui-float-label">
+                      <input id="float-input" type="text" size="30" pInputText name="janta" 
+                      [(ngModel)]="dieta.janta" #janta="ngModel" required>
+                      <label for="float-input">Janta*</label>
+                  </span>
+            
+                  <div *ngIf="janta.hasError('required') && janta.dirty"
+                  class="ui-message ui-messages-error" >
+                  Informe a Janta
+                  </div>
+            
+                  </div>
+
+                  <div class="ui-g-12 ui-fluid">
+                    <span class="ui-float-label">
+                        <input id="float-input" type="text" size="30" pInputText name="lancheNoite" 
+                        [(ngModel)]="dieta.lancheNoite" #lancheNoite="ngModel" required>
+                        <label for="float-input">Lanche da Noite*</label>
+                    </span>
+              
+                    <div *ngIf="lancheNoite.hasError('required') && lancheNoite.dirty"
+                    class="ui-message ui-messages-error" >
+                    Informe o Lanche da Noite
+                    </div>
+              
+                    </div>
+                    
+                    <div class="ui-g-12 ui-fluid">
+                      <span class="ui-float-label">
+                          <input id="float-input" type="text" size="30" pInputText name="qtdeAguaDiaria" 
+                          [(ngModel)]="dieta.qtdeAguaDiaria" #qtdeAguaDiaria="ngModel" required>
+                          <label for="float-input">Quantidade Mínima de Água*</label>
+                      </span>
+                
+                      <div *ngIf="qtdeAguaDiaria.hasError('required') && qtdeAguaDiaria.dirty"
+                      class="ui-message ui-messages-error" >
+                      Informe a Quantidade Mínima de Água
+                      </div>
+                
+                      </div>
+      <!--fimCardapio-->
+
       <div class="ui-g-12 ui-fluid">
       <span class="ui-float-label">
         
@@ -54,7 +171,7 @@
     </div>
 
     <br/>
-    <button pButton type="submit" class="ui-button-primary" label="Cadastrar"></button>
+    <button pButton type="submit" class="ui-button-primary" [disabled]="f.invalid" label="Cadastrar"></button>
     <button pButton type="button" class="ui-button-secondary" label="Limpar"></button>
   </form>
 </div>

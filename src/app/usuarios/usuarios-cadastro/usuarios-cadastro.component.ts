@@ -25,7 +25,7 @@ export class UsuariosCadastroComponent {
   salvar(form: FormControl) {
     this.usuarioService.save(this.usuario)
       .then(() => {
-          this.toasty.info('Usuário cadastrado com Sucesso')
+          this.toasty.success('Usuário cadastrado com Sucesso')
           form.reset()
       })
       .catch(err => this.errorHandle.handle(err))

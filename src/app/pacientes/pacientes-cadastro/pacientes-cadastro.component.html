@@ -54,13 +54,26 @@
                           </div>
                       </div>
 
-                      <div class="ui-g-6 ui-fluid">
+                      <div class="ui-g-3 ui-fluid">
+                          <span class="ui-float-label">
+                              <p-inputMask mask="(99)99999-9999"
+                              name="telefone" [(ngModel)]="paciente.telefone" #telefone="ngModel" required></p-inputMask>
+                              <label for="float-input">Telefone*</label>
+                          </span>
+                          <div *ngIf="telefone.hasError('required') && telefone.dirty"
+                          class="ui-message ui-messages-error" >
+                            Informe um telefone de contato
+                          </div>
+                      </div>
+
+                      <div class="ui-g-3 ui-fluid">
                           <span style="font-weight: bold; margin-left: 8px" >Situação</span>
                           <p-inputSwitch onLabel="Ativo" offLabel="Inativo"></p-inputSwitch>
                       </div>
                     </div>
 
-                    <div class="ui-g-3 ui-fluid">
+                    <div class="ui-g">
+                    <div class="ui-g-6 ui-fluid">
                         <span class="ui-float-label">
                             <input id="float-input" type="text" size="30" pInputText
                               name="email" [(ngModel)]="paciente.email" #email="ngModel" required>
@@ -72,7 +85,7 @@
                         </div>
                     </div>
 
-                    <div class="ui-g">
+                    
                       <div class="ui-g-3 ui-fluid">
                       <span class="ui-float-label">
                           <input id="float-input" pPassword type="password"
@@ -88,13 +101,10 @@
                       <div class="ui-g-3 ui-fluid">
                           <span class="ui-float-label">
                               <input id="float-input" pPassword type="password"
-                                name="confirmaSenha" [(ngModel)]="paciente.confirmaSenha" #confirmaSenha="ngModel" required />
+                                   required />
                               <label for="float-input">Confirma Senha*</label>
                           </span>
-                          <div *ngIf="confirmaSenha.hasError('required') && confirmaSenha.dirty"
-                          class="ui-message ui-messages-error" >
-                            Confirme sua Senha
-                          </div>
+                       
                       </div>
                     </div>
 
@@ -106,7 +116,7 @@
             <div class="ui-g-6 ui-fluid">
                 <span class="ui-float-label">
                   <input id="float-input" type="text" size="30" pInputText
-                    name="logradouro" [(ngModel)]="paciente.logradouro" #logradouro="ngModel" required>
+                    name="logradouro" [(ngModel)]="paciente.endereco.logradouro" #logradouro="ngModel" required>
                   <label for="float-input">Descrição*</label>
               </span>
               <div *ngIf="logradouro.hasError('required') && logradouro.dirty"
@@ -118,7 +128,7 @@
               <div class="ui-g-2 ui-fluid">
                   <span class="ui-float-label">
                     <input id="float-input" type="text" size="10" pInputText
-                      name="numero" [(ngModel)]="paciente.numero" #numero="ngModel" required>
+                      name="numero" [(ngModel)]="paciente.endereco.numero" #numero="ngModel" required>
                     <label for="float-input">Número*</label>
                 </span>
                 <div *ngIf="numero.hasError('required') && numero.dirty"
@@ -130,7 +140,7 @@
                 <div class="ui-g-4 ui-fluid">
                     <span class="ui-float-label">
                       <input id="float-input" type="text" size="30" pInputText
-                        name="complemento" [(ngModel)]="paciente.complemento" #complemento="ngModel" required>
+                        name="complemento" [(ngModel)]="paciente.endereco.complemento" #complemento="ngModel" required>
                       <label for="float-input">Complemento*</label>
                   </span>
                   <div *ngIf="complemento.hasError('required') && complemento.dirty"
@@ -142,7 +152,7 @@
                     <div class="ui-g-4 ui-fluid">
                         <span class="ui-float-label">
                             <p-inputMask mask="99999-999"
-                              name="cep" [(ngModel)]="paciente.cep" #cep="ngModel" required></p-inputMask>
+                              name="cep" [(ngModel)]="paciente.endereco.cep" #cep="ngModel" required></p-inputMask>
                             <label for="float-input">Cep*</label>
                         </span>
                         <div *ngIf="cep.hasError('required') && cep.dirty"
@@ -154,7 +164,7 @@
                     <div class="ui-g-4 ui-fluid">
                       <span class="ui-float-label">
                         <input id="float-input" type="text" size="30" pInputText
-                          name="cidade" [(ngModel)]="paciente.cidade" #cidade="ngModel" required>
+                          name="cidade" [(ngModel)]="paciente.endereco.cidade" #cidade="ngModel" required>
                         <label for="float-input">Cidade*</label>
                     </span>
                     <div *ngIf="cidade.hasError('required') && cidade.dirty"
@@ -166,7 +176,7 @@
                     <div class="ui-g-4 ui-fluid">
                       <span class="ui-float-label">
                         <input id="float-input" type="text" size="30" pInputText
-                          name="estado" [(ngModel)]="paciente.estado" #estado="ngModel" required>
+                          name="estado" [(ngModel)]="paciente.endereco.estado" #estado="ngModel" required>
                         <label for="float-input">Estado*</label>
                     </span>
                     <div *ngIf="estado.hasError('required') && estado.dirty"
@@ -178,9 +188,21 @@
 
         </p-tabPanel>
 
+        <p-tabPanel header="Doença">  
+            <div class="ui-g">
+                <div class="ui-g-12 ui-fluid">
+                    <div class="ui-g-12 ui-fluid">
+                        <p-dropdown name="doenca" [options]="doencas" [autoWidth]="false"
+                          placeholder="Selecione uma Doença" [filter]=true
+                           [(ngModel)]="paciente.doenca.codigo" ></p-dropdown>
+                    </div>           
+                </div>
+            </div>
+          
+          </p-tabPanel>      
     </p-tabView>
 
-    <button pButton type="submit" class="ui-button-primary" label="Cadastrar"></button>
+    <button pButton type="submit" class="ui-button-primary" [disabled]="f.invalid" label="Cadastrar"></button>
     <button pButton type="button" class="ui-button-secondary" label="Limpar"></button>
   </form>
 </div>

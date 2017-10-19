@@ -26,16 +26,15 @@ export class DietasCadastroComponent implements OnInit{
     this.loadPacientes()
   }
 
+  pacientes = []
   dieta = new dieta()
-
-  pacientes = [{label: 'Selecione', value: null}]
 
   save(form: FormControl) {
       this.dietaService
         .save(this.dieta)
         .then(() => {
           console.log(dieta)
-          this.toasty.success('Dieta Cadastrada com Sucesso')
+          this.toasty.success('Dieta Cadastrada com Sucesso!')
           form.reset()
         })
         .catch(err => this.errorHandler.handle(err))
