@@ -13,7 +13,8 @@
               <p-dropdown [options]="situacoes" [autoWidth]="false"  ></p-dropdown>
           </div>
       </div>
-      <button pButton type="submit" class="ui-button-primary" label="Pesquisar" ></button>
+      
+      <button style="margin-left: 8px" pButton type="submit" class="ui-button-primary" label="Pesquisar" ></button>
     </form>
 
     <div class="ui-g">
@@ -27,20 +28,21 @@
             <p-column field="email"  header="E-Mail" styleClass="col-data"></p-column>
             <p-column field="situacao"  header="Situação" styleClass="col-data"></p-column>
 
-            <p-column styleClass="col-acoes">
+            <p-column styleClass="col-acoes"  >
 
               <ng-template let-l="rowData" pTemplate="body">
                 <a pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPostion="top" ></a>
 
-                <button pButton icon="fa-trash" pTooltip="Apagar" tooltipPostion="top"
-                    ></button>
+                <button pButton icon="fa-trash" pTooltip="Apagar" tooltipPostion="top"></button>
                 </ng-template>
 
             </p-column>
           </p-dataTable>
 
         </div>
-        <a routerLink="/usuarios/novo">Novo Paciente</a>
+        <div class="ui-g-12">
+          <a pButton label="Novo Paciente" routerLink="/pacientes/novo"></a>
+        </div>
   </div>
 </div>

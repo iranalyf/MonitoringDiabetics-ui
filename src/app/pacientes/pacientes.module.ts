@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { RouterModule } from '@angular/router'
 
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
@@ -29,6 +29,7 @@ import { PacienteService } from './paciente.service'
     FormsModule,
     BrowserAnimationsModule,
     BrowserModule,
+    RouterModule,
 
     InputTextModule,
     CalendarModule,

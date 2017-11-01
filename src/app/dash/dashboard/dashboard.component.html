@@ -1,43 +1,100 @@
 <div class="container">
     <h2>Dashboard</h2>
 
+    <!--inicio dos boxes de números -->
+    <small style="margin-left:10px">Alguns Números</small>
     <div class="ui-g">
-        <div class="ui-g-4 ui-fluid">
-            <p-panel header="Total de Profissionais Ativos">
+        <div class="ui-g-3 ui-fluid">
+            <p-panel header="Total de Profissionais Disponíveis">
+                <br/>
+                {{totalAllUsers}}
+            </p-panel>
+        </div>
+    
+        <div class="ui-g-3 ui-fluid">
+            <p-panel header="Total de Pacientes Cadastrados">
+                <br/>
+                {{pacientes}}
+            </p-panel>
+        </div>
+
+        <div class="ui-g-3 ui-fluid">
+             <p-panel header="Total de Pacientes Ativos">
+                 <br/>
+                {{pacientesActives}}
+             </p-panel>
+        </div>
+
+         <div class="ui-g-3 ui-fluid">
+            <p-panel header="Média de utilização do App ">
+                <br/>
+               12
+             </p-panel>
+         </div>
+    </div>
+     <!--fim dos boxes de números -->
+
+     <!--inicio dos boxes de doencas -->
+     <br/>
+     <small style="margin-left:10px">Total de Doenças por Paciente</small>
+    <div class="ui-g">
+        <div class="ui-g-3 ui-fluid">
+            <p-panel header="Diabete tipo 1 (DM1)">
+                <br/>
                 {{totalAllUsers}}
             </p-panel>
         </div>
 
-        <div class="ui-g-4 ui-fluid">
-             <p-panel header="Total de Pacientes Ativos">
-                    {{pacientesActives}}
+        <div class="ui-g-3 ui-fluid">
+             <p-panel header="Diabete tipo 2 (DM2)">
+                <br/>
+                {{pacientesActives}}
             </p-panel>
         </div>
 
-        <div class="ui-g-4 ui-fluid">
-            <p-panel header="Total de Pacientes">
-                        {{pacientes}}
+        <div class="ui-g-3 ui-fluid">
+            <p-panel header="Diabete Gestacional">
+                <br/>
+                {{pacientes}}
+             </p-panel>
+         </div>
+
+         <div class="ui-g-3 ui-fluid">
+            <p-panel header="Diabete tipo LADA">
+                <br/>
+               12
              </p-panel>
          </div>
     </div>
+    <!--fim dos boxes de doencas -->
+
+    <!--inicio dos Charts-->
+    <br/>
     <div class="ui-g">
         <div class="ui-g-6 ui-fluid">
             <p-growl [value]="msgs"></p-growl>
+            <span>Total de Pacientes Por Mês</span>
+            <small>Ultimos 6 meses</small>
             <p-chart type="line" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
         </div>
 
         <div class="ui-g-6 ui-fluid">
             <p-growl [value]="msgs"></p-growl>
+            <span>Pacientes Por Situação</span>
+            <small>Ultimos 6 meses</small>
             <p-chart type="bar" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
         </div>
 
-        <div class="ui-g-6 ui-fluid">
-            <p-growl [value]="msgs"></p-growl>
+        <div class="ui-g-6 ui-fluid">     
+            <span>Pacientes Por Doença</span>
+            <small>Ultimos 6 meses</small>
             <p-chart type="radar" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
         </div>
 
         <div class="ui-g-6 ui-fluid">
             <p-growl [value]="msgs"></p-growl>
+            <span>Total Medicações Finalizadas pelo App (Total e Finalizadas)</span>
+            <small>Ultimos 6 meses</small>
             <p-chart type="line" [data]="data" (onDataSelect)="selectData($event)"></p-chart>
         </div>
     </div>
