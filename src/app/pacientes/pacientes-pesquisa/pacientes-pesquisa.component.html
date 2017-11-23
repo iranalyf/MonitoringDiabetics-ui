@@ -27,13 +27,14 @@
             <p-column field="dataNascimento"  header="Data de Nascimento" ></p-column>
             <p-column field="email"  header="E-Mail" styleClass="col-data"></p-column>
             <p-column field="situacao"  header="Situação" styleClass="col-data"></p-column>
-
+            <p-column field="doenca.nome"  header="Doença" styleClass="col-data"></p-column>
             <p-column styleClass="col-acoes"  >
 
-              <ng-template let-l="rowData" pTemplate="body">
+              <ng-template let-paciente="rowData" pTemplate="body">
+                <button pButton (click)="showDialogDietas(paciente)" icon="fa-external-link-square" pTooltip="Ver Dietas" tooltipPostion="top"></button>
+                <button pButton (click)="showDialogMedics(paciente)" icon="fa-external-link-square" pTooltip="Ver Medic." tooltipPostion="top"></button>
                 <a pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPostion="top" ></a>
-
                 <button pButton icon="fa-trash" pTooltip="Apagar" tooltipPostion="top"></button>
                 </ng-template>
 
@@ -44,5 +45,14 @@
         <div class="ui-g-12">
           <a pButton label="Novo Paciente" routerLink="/pacientes/novo"></a>
         </div>
+
+        <p-dialog header="Title" [(visible)]="displayDietas">
+            {{dietasPaciente}}
+        </p-dialog>
+
+        <p-dialog header="Title" [(visible)]="displayMedics">
+          {{medicacoesPaciente}}
+        </p-dialog>
+
   </div>
 </div>

@@ -22,7 +22,7 @@ export class MedicacaoHorarioComponent implements OnInit {
 
   ngOnInit() {
     this.findAllPacientes()
-    this.findAllMedicacoesByIdPaciente(1)
+    this.findAllMedicacoesByIdPaciente(2)
   }
 
   horarioMedicacao = new horarioMedicacao()
@@ -31,13 +31,13 @@ export class MedicacaoHorarioComponent implements OnInit {
 
   save(form: FormControl) {
     console.log(this.horarioMedicacao)
-    // return this.medicacaoService.saveHorarioMedicacao(this.horarioMedicacao)
-    //   .then(() => {
-    //     this.toasty.success('Horario de Medicação Definido com Sucesso!')
-    //   })
-    //   .catch(err => this.errorHandler.handle(err))
+      return this.medicacaoService.saveHorarioMedicacao(this.horarioMedicacao)
+        .then(() => {
+          this.toasty.success('Horario de Medicação Definido com Sucesso!')
+        })
+        .catch(err => this.errorHandler.handle(err))
   }
-
+  
   findAllPacientes() {
     return this.medicacaoService.findAllPacients()
       .then(response => {

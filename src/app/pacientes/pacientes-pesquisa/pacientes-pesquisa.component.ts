@@ -17,17 +17,43 @@ export class PacientesPesquisaComponent  {
     this.findAll()
   }
 
+  pacientes = []
+  dietasPaciente = []
+  medicacoesPaciente = []
+  displayDietas: boolean = false
+  displayMedics: boolean = false
+  
+  showDialogDietas(paciente) {
+      this.findDietasByPaciente(paciente.codigo)
+      this.displayDietas = true
+  }
+
+  showDialogMedics(paciente) {
+    this.findMedicacoesByPaciente(paciente.codigo)
+      this.displayMedics = true
+  }
+
   situacoes = [
     { label: 'Selecione a situação', value: null },
     { label: 'Ativo', value: 1 },
     { label: 'Inativo', value: 2 }
   ];
 
-  pacientes = [];
-
   findAll() {
     this.pacienteService.findAll()
     .then(response => this.pacientes = response)
     .catch(err => this.errorHandle.handle(err))
+  }
+
+  findDietasByPaciente(codigo: number) {
+    return this.pacienteService.findAllDietasByPaciente(codigo)
+      .then(response => this.dietasPaciente = response)
+      .catch(err => err)
+  }
+
+  findMedicacoesByPaciente(codigo: number) {
+    return this.pacienteService.findAllMedicacoesByPaciente(codigo)
+      .then(response => this.medicacoesPaciente = response)
+      .catch(err => err)
   }
 }

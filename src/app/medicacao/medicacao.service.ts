@@ -11,7 +11,7 @@ export class MedicacaoService {
 
   medicacaoUrl = 'http://localhost:8080/api/v1/medicacoes'
 
-  horarioMedicacaoUrl = 'http://localhost:8080/api/v1/horario-medicacao'
+  horarioMedicacaoUrl = 'http://localhost:8080/api/v1/horario-medicacoes'
 
   pacienteUrl = 'http://localhost:8080/api/v1/pacientes'
 

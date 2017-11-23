@@ -41,4 +41,22 @@ export class PacienteService {
       .then(response => response.json())
   }
 
+  findAllDietasByPaciente(codigo: number): Promise<any> {
+    const headers = new Headers()
+    headers.append('Authorization', 'Basic YWRtaW5AZ21haWwuY29tOmFkbWlu')
+
+    return this.http.get(`${this.pacientesUrl}/${codigo}/dietas`, { headers })
+      .toPromise()
+      .then(response => response.json())
+  }
+
+  findAllMedicacoesByPaciente(codigo: number): Promise<any> {
+    const headers = new Headers()
+    headers.append('Authorization', 'Basic YWRtaW5AZ21haWwuY29tOmFkbWlu')
+
+    return this.http.get(`${this.pacientesUrl}/${codigo}/medicacoes`, { headers })
+      .toPromise()
+      .then(response => response.json())
+  }
+
 }
